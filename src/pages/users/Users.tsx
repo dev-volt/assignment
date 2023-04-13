@@ -6,6 +6,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  SelectChangeEvent,
   TextField,
   Typography,
 } from '@mui/material';
@@ -81,11 +82,11 @@ const Users = () => {
     );
 
   const handleFilterColumnChange = useCallback(
-    (event: React.ChangeEvent<{ value: string }>, columnId: string) => {
-      setFilterColumn({
-        ...filterColumn,
+    (event: SelectChangeEvent<string>, columnId: string) => {
+      setFilterColumn((prevFilterColumn) => ({
+        ...prevFilterColumn,
         [columnId]: event.target.value,
-      });
+      }));
     },
     [filterColumn]
   );
